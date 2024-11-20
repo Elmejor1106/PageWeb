@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tienda Digital con Juego</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+
+<body>
+
+    <header class="bg-light py-3">
+        <div class="container d-flex align-items-center justify-content-between">
+            <div class="d-flex align-items-center">
+                <img src="Logo.jpg" alt="Logo de PaginaWeb" class="me-3"
+                    style="max-width: 100%; height: auto; width: 50px;">
+                <a href="#" class="h4 mb-0 text-decoration-none text-dark">Tienda Digital</a>
+            </div>
+            <nav class="d-flex">
+                <a href="index.html" class="nav-link text-dark me-3">Inicio</a>
+                <a href="productos.html" class="nav-link text-dark me-3">Productos</a>
+                <a href="contacto.php" class="nav-link text-dark">Contacto</a>
+                <div class="dropdown">
+                    <a href="#" class="nav-link text-dark dropdown-toggle" id="cartDropdown" data-bs-toggle="dropdown"
+                        aria-expanded="false">
+                        🛒 Carrito <span id="cart-count" class="badge bg-primary">0</span>
+                    </a>
+                    <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="cartDropdown">
+                        <li>
+                            <div id="items-carrito" class="dropdown-item"></div>
+                        </li>
+                        <li>
+                            <div class="dropdown-item">
+                                Total: $<span id="total">0.00</span>
+                            </div>
+                        </li>
+                        <li><button id="proceder-pago" class="dropdown-item btn btn-primary w-100">Proceder al
+                                pago</button></li>
+                    </ul>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Misión y Visión -->
+    <section class="container my-5">
+        <h2 class="text-center mb-4">Presentación</h2>
+        <div class="row">
+            <div class="col-md-6">
+                <div class="card border-0 shadow-sm">
+                    <div class="card-body text-center">
+                        <h3 class="card-title">Presentación</h3>
+                        <p class="card-text">
+                            <iframe width="560" height="315"
+                                src="https://app.heygen.com/embeds/04e66a5120a44d3cbb172dc82dc369ad"
+                                title="HeyGen video player" frameborder="0" allow="encrypted-media; fullscreen;"
+                                allowfullscreen></iframe>
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="card border-0 shadow-sm">
+                    <div class="card-body text-center">
+                        <h3 class="card-title">Video App Inventor</h3>
+                        <h3 class="card-title">Increíble</h3>
+                        <p class="card-text">
+                            <video width="560" height="315" controls>
+                                <source src="video.mp4" type="video/mp4">
+                                Tu navegador no soporta la etiqueta de video.
+                            </video>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+
+    <section class="container my-5">
+        <div class="row">
+            <div class="col-md-6">
+                <div class="card border-0 shadow-sm">
+                    <div class="card-body text-center">
+                        <h3 class="card-title">Misión</h3>
+                        <p class="card-text">
+                            Nuestra misión es ofrecer manillas de acero inoxidable personalizadas de alta calidad, que
+                            representen la identidad y estilo único de cada cliente. Nos comprometemos a brindar un
+                            producto duradero, elegante y accesible, diseñado para satisfacer las expectativas de
+                            nuestros
+                            clientes, mientras promovemos la creatividad y el diseño innovador.
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="card border-0 shadow-sm">
+                    <div class="card-body text-center">
+                        <h3 class="card-title">Visión</h3>
+                        <p class="card-text">
+                            Nuestra visión es convertirnos en el líder en el mercado de accesorios personalizados,
+                            destacándonos
+                            por la calidad, originalidad y satisfacción del cliente. Aspiramos a expandir nuestro
+                            alcance,
+                            ofreciendo diseños únicos que reflejen los intereses, pasiones y emociones de nuestros
+                            usuarios,
+                            mientras fomentamos prácticas sostenibles y responsables.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Catálogo -->
+    <section class="container my-5">
+        <h2 class="text-center mb-4">Catálogo</h2>
+        <div class="ratio ratio-16x9">
+            <iframe loading="lazy"
+                style="position: absolute; width: 80%; height: 80%; top: 0; left: 0; border: none; padding: 0;margin: 0;"
+                src="https://www.canva.com/design/DAGW1cMyOhY/c6Z2leCb5kZ66eUbXDoF1A/view?embed"
+                allowfullscreen="allowfullscreen" allow="fullscreen">
+            </iframe>
+        </div>
+    </section>
+
+    <section class="container my-5">
+        <h2 class="text-center mb-4">Juego de Scratch</h2>
+        <div class="ratio ratio-16x9">
+            <iframe src="https://scratch.mit.edu/projects/1089320678/embed" allowtransparency="true" frameborder="0"
+                scrolling="no" allowfullscreen></iframe>
+        </div>
+    </section>
+
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="carrito.js"></script>
+    <script>
+        document.getElementById('proceder-pago').addEventListener('click', function () {
+            const total = document.getElementById('total').textContent;
+            if (parseFloat(total) > 0) {
+                // Vaciar el carrito en memoria
+                carrito = [];
+
+                // Eliminar el carrito del localStorage
+                localStorage.removeItem("carrito");
+
+                // Redirigir a la página de pago
+                window.location.href = '../PaginaWeb/secciones/pago.html';
+            } else {
+                alert('Tu carrito está vacío. Añade productos antes de proceder al pago.');
+            }
+        });
+
+    </script>
+</body>
+
+</html>

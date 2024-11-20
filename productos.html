@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contacto</title>
+
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="micss.css">
+</head>
+
+<body>
+    <header class="bg-light py-3">
+        <div class="container d-flex align-items-center justify-content-between">
+            <div class="d-flex align-items-center">
+                <img src="Logo.jpg" alt="Logo de NotiJuan" class="me-3"
+                    style="width: 50px;">
+                <a href="#" class="h4 mb-0 text-decoration-none text-dark">Tienda Digital</a>
+            </div>
+            <nav class="d-flex">
+                <a href="index.html" class="nav-link text-dark me-3">Inicio</a>
+                <a href="productos.html" class="nav-link text-dark me-3">Productos</a>
+                <a href="contacto.php" class="nav-link text-dark">Contacto</a>
+                <div class="dropdown">
+                    <a href="#" class="nav-link text-dark dropdown-toggle" id="cartDropdown" data-bs-toggle="dropdown"
+                        aria-expanded="false">
+                        🛒 Carrito <span id="cart-count" class="badge bg-primary">0</span>
+                    </a>
+                    <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="cartDropdown">
+                        <li>
+                            <div id="items-carrito" class="dropdown-item"></div>
+                        </li>
+                        <li>
+                            <div class="dropdown-item">
+                                Total: $<span id="total">0.00</span>
+                            </div>
+                        </li>
+                        <li><button id="proceder-pago" class="dropdown-item btn btn-primary w-100">Proceder al
+                                pago</button></li>
+
+                    </ul>
+                </div>
+            </nav>
+
+        </div>
+    </header>
+    <div class="container">
+        <section id="inicio" class="section active">
+            <h1>Tienda Digital</h1>
+
+            <div class="productos">
+                <div class="producto">
+                    <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjIOrpuoqXS4S7stIMimLjj6v5TEXT2nhhdlQMhWRigfQgaIVq4EVNbTA8xTR9gvKkf1rnaQMquqH5nYaqEQfK8R0u60zOgaPAfCMR8k-5r8vMknFHP2RH8Gyv-Y0KhcrvC15jVD9OyEyI/s1600/Brazaletes+anchos+-1.jpg"
+                        alt="Manilla">
+                    <h3>Manilla Personalizada</h3>
+                    <p>Pidela a tu gusto</p>
+                    <p>Precio: $27.000</p>
+                    <button onclick="agregarAlCarrito('Manilla Personalizada', 27000)">Agregar al carrito</button>
+                </div>
+
+                <div class="producto">
+                    <img src="Manilla2.jpg" alt="Manilla AB">
+                    <h3>Manilla Fútbol</h3>
+                    <p>De tu equipo Favorito</p>
+                    <p>Precio: $32.000</p>
+                    <button onclick="agregarAlCarrito('Manilla Fútbol', 32000)">Agregar al carrito</button>
+                </div>
+
+                <div class="producto">
+                    <img src="Manilla3.jpg" alt="App de Fitness">
+                    <h3>Manilla Marcas</h3>
+                    <p> personalizadas</p>
+                    <p>Precio: $28.000</p>
+                    <button onclick="agregarAlCarrito('Manilla Equipos', 28000)">Agregar al carrito</button>
+                </div>
+                <div class="producto">
+                    <img src="Manilla4.jpg" alt="App de Fitness">
+                    <h3>Manilla Futbol</h3>
+                    <p> personalizadas</p>
+                    <p>Precio: $30.000</p>
+                    <button onclick="agregarAlCarrito('Manilla Equipos', 30000)">Agregar al carrito</button>
+                </div>
+            </div>
+            <a href="https://www.canva.com/design/DAGW1cMyOhY/NirBXG57Nfir3DZ08NPn_Q/edit?utm_content=DAGW1cMyOhY&utm_campaign=designshare&utm_medium=link2&utm_source=sharebutton"
+                class="nav-link text-dark me-3" target="blank">Mirar Mas productos</a>
+
+        </section>
+
+
+    </div> <!-- Bootstrap JS and Icons -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.js"></script>
+
+    <script src="carrito.js"></script>
+    <script>
+        document.getElementById('proceder-pago').addEventListener('click', function () {
+            // Aquí puedes agregar una validación del carrito o total antes de redirigir
+            const total = document.getElementById('total').textContent;
+            if (parseFloat(total) > 0) {
+                // Vaciar el carrito en memoria
+                carrito = [];
+
+                // Eliminar el carrito del localStorage
+                localStorage.removeItem("carrito");
+
+                // Redirigir a la página de pago
+                window.location.href = 'pago.html'; // Cambia 'pago.html' por la URL de tu página de pago.
+            } else {
+                alert('Tu carrito está vacío. Añade productos antes de proceder al pago.');
+            }
+        });
+
+    </script>
+</body>
